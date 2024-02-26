@@ -22,5 +22,32 @@ date_of_birth = datetime.strptime(date_of_birth_input, "%Y-%m-%d")
 age = calculate_age(date_of_birth)
 print("Your age is:", age)
 
-# Task 3: use the above functions to make the Command line app to simply take Name and Date of birth as input and print "Hello <Username>, your age is <calculated age> years"
+
+#from datetime import datetime
+
+def greet_user(username):
+    return "Hello " + username
+
+def calculate_age(date_of_birth):
+    current_date = datetime.now()
+    age = current_date.year - date_of_birth.year - ((current_date.month, current_date.day) < (date_of_birth.month, date_of_birth.day))
+    return age
+
+def main():
+    # Input name
+    username = input("Please enter your name: ")
+
+    # Input date of birth
+    date_of_birth_input = input("Please enter your date of birth (YYYY-MM-DD): ")
+    date_of_birth = datetime.strptime(date_of_birth_input, "%Y-%m-%d")
+
+    # Calculate age
+    age = calculate_age(date_of_birth)
+
+    # Greet user and print age
+    greeting_message = greet_user(username)
+    print(f"{greeting_message}, your age is {age} years")
+
+if __name__ == "__main__":
+    main()
 
